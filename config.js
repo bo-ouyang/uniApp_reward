@@ -1,6 +1,6 @@
 export default {
 	// API地址
-	base_url:'https://yekun.gek6.cn',
+	base_url:'help.ouyang.wiki',
 	// 图片上传接口
 	upload_img_url:'http://uni_upload.gek6.com/index.php/index/upload',
 	

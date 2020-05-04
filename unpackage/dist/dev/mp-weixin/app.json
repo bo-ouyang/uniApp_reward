@@ -1,0 +1,73 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/my/my",
+    "pages/login/login",
+    "pages/hall/hall",
+    "pages/msg/msg",
+    "pages/chat/chat",
+    "pages/search/search",
+    "pages/taskInfo/taskInfo",
+    "pages/intro/intro",
+    "pages/find/find",
+    "pages/pub/index",
+    "pages/pub/publish",
+    "pages/share/share"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "趣味赚",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8",
+    "navigationStyle": "custom"
+  },
+  "tabBar": {
+    "color": "#bfbfbf",
+    "selectedColor": "#1296db",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "static/tabbar/home.png",
+        "selectedIconPath": "static/tabbar/home_click.png"
+      },
+      {
+        "pagePath": "pages/find/find",
+        "text": "发现",
+        "iconPath": "static/tabbar/hall.png",
+        "selectedIconPath": "static/tabbar/hall_click.png"
+      },
+      {
+        "pagePath": "pages/share/share",
+        "text": "邀请赚钱",
+        "iconPath": "static/tabbar/plus.png",
+        "selectedIconPath": "static/tabbar/plus.png"
+      },
+      {
+        "pagePath": "pages/msg/msg",
+        "text": "消息",
+        "iconPath": "static/tabbar/withdraw.png",
+        "selectedIconPath": "static/tabbar/withdraw_click.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "static/tabbar/my.png",
+        "selectedIconPath": "static/tabbar/my_click.png"
+      }
+    ]
+  },
+  "uniStatistics": {
+    "enable": false
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "获取用户定位"
+    }
+  },
+  "usingComponents": {
+    "cu-custom": "/colorui/components/cu-custom"
+  },
+  "sitemapLocation": "sitemap.json"
+}

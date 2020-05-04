@@ -206,10 +206,10 @@
 				<view class="cuIcon-service text-green">
 					<view class="cu-tag badge"></view>
 				</view>
-				客服
+				联系对方
 			</button>
 			<view class="action text-orange">
-				<view class="cuIcon-favorfill"></view> 已收藏
+				<view class="cuIcon-favor"></view> 关注店铺
 			</view>
 			<view class="action">
 <!-- 					<view class="cuIcon-cart">

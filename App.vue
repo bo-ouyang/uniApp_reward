@@ -1,10 +1,57 @@
 <script>
+	import {
+			mapMutations
+		} from 'vuex';
 	import Vue from 'vue'
+	
 	export default {
 		onLaunch: function() {
 			console.log('App Launch')
+			/* uni.getSetting({
+            success(res) {                    
+                if (!res.authSetting['scope.userLocation']) {
+                    // 未授权
+                    /* uni.authorize({
+                        scope: 'scope.userInfo',
+                        success() { //1.1 允许授权
+								uni.authorize({
+									scope: 'scope.userLocation',
+									success() {
+										
+									}
+								})
+						
+                             uni.getUserInfo({
+                             	
+                             })
+                            
+                        },
+                        fail(){    //1.2 拒绝授权
+                            console.log("你拒绝了授权，无法获得周边信息")
+                        }
+                    }) 
+                }else{
+                    // 已授权 ..(获取位置信息)
+                }
+            }
+        }); */
+			uni.getStorage({
+				key:"userInfo",
+				success:(res)=>{
+					console.log(res)
+					this.setlogin(res.data)
+					var res = res.data
+										// 如果还需要重新校验或是想要刷新token的有效时间 就再联网请求一次
+										this.$api.auth({user:res.data.username}).then((ret)=>{
+												this.setlogin(ret.data);
+										}).catch((err)=>{
+											
+										})
+				}
+			})
+			
 			uni.getSystemInfo({
-				success: function(e) {
+				success: function(e) {	
 					// #ifndef MP
 					Vue.prototype.StatusBar = e.statusBarHeight;
 					if (e.platform == 'android') {
@@ -25,25 +72,26 @@
 					// #endif
 				}
 			})			
-			
-			
-			
 		},
 		onShow: function() {
 			console.log('App Show')
 		},
 		onHide: function() {
 			console.log('App Hide')
+		},
+		methods:{
+			...mapMutations(['setlogin'])
 		}
 	}
 </script>
 
-<style>
+<style lang="scss">
 	/*每个页面公共css */
+	@import "./uni.scss";
 	@import "colorui/main.css";
 	@import "colorui/icon.css";
 	@import "colorui/animation.css";
-	
+	@import "/static/iconfont/font.scss";
 	.page {
 		height: 100Vh;
 		width: 100vw;

@@ -1,0 +1,11 @@
+
+.logo-box{
+	/* min-height: 180upx; */
+}
+.logo-box .cu-item{
+	min-height: 180rpx;
+}
+.wallet-bar{
+	min-height: 80rpx;
+}
+

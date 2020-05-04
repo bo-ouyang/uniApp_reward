@@ -1,0 +1,64 @@
+
+.find-all{
+	margin: 20rpx 250rpx 20rpx;
+	font-size: small;
+	color: #333333;
+}
+.footer-title{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-flex:left;
+	-webkit-flex:left;
+	        flex:left;
+	margin: 10rpx;
+	font-size: large;
+}
+.cu-list.grid>.cu-item {
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+}
+.user-avatar{
+	border-radius: 50%;
+	height: 90rpx;
+	width: 90rpx;
+}
+.recommend{
+	margin-top: 8rpx;
+}
+
+	
+/* 列表 */
+.cu-list.menu-avatar>.cu-item{
+	height: 160rpx;
+}
+.platform-cut{
+	margin-left: 20rpx;
+}
+.cu-platform{
+	width: 30rpx;
+	height: 30rpx;
+	margin-left: 10rpx;
+}
+.cu-cate{
+	font-size: 24rpx;
+	height: auto;
+}
+
+	
+/* 活动 */
+.activity{
+	width: 100vw;
+}
+.activity_img{
+	width: 100vw;
+}
+.scroll{
+}
+
+	
+/* .margin-top-footer{
+	height: 60upx;
+} */
+

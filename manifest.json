@@ -16,7 +16,9 @@
             "delay" : 0
         },
         /* 模块配置 */
-        "modules" : {},
+        "modules" : {
+            "OAuth" : {}
+        },
         /* 应用发布信息 */
         "distribute" : {
             /* android打包配置 */
@@ -49,30 +51,69 @@
             /* ios打包配置 */
             "ios" : {},
             /* SDK配置 */
-            "sdkConfigs" : {}
+            "sdkConfigs" : {
+                "oauth" : {
+                    "weixin" : {
+                        "appid" : "wxe20199175b86ee23",
+                        "appsecret" : "ad9cf1f785cab5b45fdb3006b0d1d5b8",
+                        "UniversalLinks" : ""
+                    }
+                }
+            }
+        },
+        "uniStatistics" : {
+            "enable" : false
         }
     },
     /* 快应用特有相关 */
     "quickapp" : {},
     /* 小程序特有相关 */
     "mp-weixin" : {
-        "appid" : "",
+        "appid" : "wxe20199175b86ee23",
         "setting" : {
             "urlCheck" : false
         },
-        "usingComponents" : true
+        "usingComponents" : true,
+        "uniStatistics" : {
+            "enable" : false
+        },
+        "permission" : {
+            "scope.userLocation" : {
+                "desc" : "获取用户定位"
+            }
+        }
     },
     "mp-alipay" : {
-        "usingComponents" : true
+        "usingComponents" : true,
+        "uniStatistics" : {
+            "enable" : false
+        }
     },
     "mp-baidu" : {
-        "usingComponents" : true
+        "usingComponents" : true,
+        "uniStatistics" : {
+            "enable" : false
+        }
     },
     "mp-toutiao" : {
-        "usingComponents" : true
+        "usingComponents" : true,
+        "uniStatistics" : {
+            "enable" : false
+        }
     },
     "h5" : {
         "title" : "趣味赚",
-        "domain" : ""
+        "domain" : "",
+        "uniStatistics" : {
+            "enable" : false
+        }
+    },
+    "uniStatistics" : {
+        "enable" : false
+    },
+    "mp-qq" : {
+        "uniStatistics" : {
+            "enable" : false
+        }
     }
 }

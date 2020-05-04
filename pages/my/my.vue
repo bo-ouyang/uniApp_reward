@@ -64,8 +64,6 @@
 						<text class="margin-left">80%</text>
 					</view>
 				</view>
-				
-
 			</view>
 			
 			
@@ -122,66 +120,18 @@
 		
 		<!-- list -->
 		<view  class="cu-list menu solid-top margin-top-xs">
-			<view  class="cu-item">
+			<view    v-for="(item,index) in cu_item" :index="index"  @click="target(item.target)" class="cu-item">
 				<view  class="content">
 					<text  class="cuIcon-circlefill text-grey"></text>
-					<text  class="text-grey">发布任务</text>
+					<text  class="text-grey">{{item.title}}</text>
 				</view>
+				
 				<view  class="action">
 					<text  class="text-grey text-sm cuIcon-right"></text>
 				</view>
 			</view>
 
-			<!-- <view  class="cu-item">
-				<navigator  class="content">
-					<text  class="cuIcon-discoverfill text-orange"></text>
-					<text  class="text-grey">我的报名</text>
-				</navigator>
-				<view  class="action">
-					<text  class="text-grey text-sm cuIcon-right"></text>
-				</view>
-			</view> -->
-
-			<view  class="cu-item">
-				<navigator  class="content">
-					<text  class="cuIcon-discoverfill text-orange"></text>
-					<text  class="text-grey">我的消息</text>
-				</navigator>
-				<view  class="action">
-					<text  class="text-grey text-sm cuIcon-right"></text>
-				</view>
-			</view>
-
-			<view  class="cu-item">
-				<view  class="content">
-					<text  class="cuIcon-circlefill text-grey"></text>
-					<text  class="text-grey">举报维权</text>
-				</view>
-				<view  class="action">
-					<text  class="text-grey text-sm cuIcon-right"></text>
-				</view>
-			</view>
-
-
-			<view  class="cu-item">
-				<view  class="content">
-					<text  class="cuIcon-circlefill text-grey"></text>
-					<text  class="text-grey">流水报表</text>
-				</view>
-				<view  class="action">
-					<text  class="text-grey text-sm cuIcon-right"></text>
-				</view>
-			</view>
-
-			<view  class="cu-item">
-				<view  class="content">
-					<text  class="cuIcon-circlefill text-grey"></text>
-					<text  class="text-grey">反馈建议</text>
-				</view>
-				<view  class="action">
-					<text  class="text-grey text-sm cuIcon-right"></text>
-				</view>
-			</view>
+		
 
 		</view>			
 	
@@ -194,24 +144,82 @@
 </template>
 
 <script>
-	
 	var loginRes;
+	import {
+			mapState,
+			mapMutations
+		} from 'vuex';
 	export default {
+		computed: mapState([ 'hasLogin','userInfo']),
 		data() {
 			return {
-				
+				cu_item:[
+					{title:'发布任务','target':'../pub/index'},
+					{title:'我的报名','target':'report.vue'},
+					{title:'我的消息','target':'report.vue'},
+					{title:'举报维权','target':'report.vue'},
+					{title:'流水报表','target':'../publish/index'},
+					{title:'反馈建议','target':'../publish/index'},
+				]
 			}
 		},
 		methods: {
 			intro(){
-				uni.navigateTo({
+				uni.redirectTo({
 					url: '../intro/intro'
+				})
+			},
+			target(url){
+				uni.navigateTo({
+					url:url
 				})
 			}
 		},
 		onLoad:function(){
-			loginRes = this.checkLogin('../my/my', 1);
-			if(!loginRes){return ;}
+ 			loginRes = this.checkLogin('../my/my', 1);
+			if(!loginRes){return ;} 
+			
+			uni.authorize({
+			    scope: 'scope.userInfo',
+			    success() {
+			       uni.login({
+			       		provider: 'weixin',
+			       		scopes:'auth_user',
+			       		success: (loginRes)=>{
+			       			console.log("success: "+JSON.stringify(loginRes));
+			       			//案例直接获取用户信息，一般不是在APP端直接获取用户信息，比如微信，获取一个code，传递给后端，后端再去请求微信服务器获取用户信息
+			       			uni.getUserInfo({
+			       				provider: 'weixin',
+			       				'lang':'zh_CN',
+			       				success: (infoRes)=>{
+			       					console.log('用户信息：' + JSON.stringify(infoRes.userInfo));
+			       					uni.setStorage({
+			       						key: 'userInfo',
+			       						data: {
+			       							username:infoRes.userInfo.nickName,
+			       							face:infoRes.userInfo.avatarUrl,
+			       							signature:'个性签名',
+			       							integral:0,
+			       							balance:0,
+			       							envelope:0
+			       						},
+			       						success: function () {
+			       							
+			       							uni.showToast({title: '登录成功',icon:"success"})
+			       							setTimeout(function(){
+			       								uni.navigateBack();
+			       							},300)
+			       						}
+			       					});
+			       				}
+			       			});
+			       		},
+			       		fail:(e)=>{
+			       			console.log("fail: "+JSON.stringify(e));
+			       		}
+			       	});
+			    }
+			})
 		}
 	}
 </script>

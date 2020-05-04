@@ -38,11 +38,23 @@
         ,{
             "path" : "pages/taskInfo/taskInfo",
             "style" : {}
-        }
-        ,{
+        },{
             "path" : "pages/intro/intro",
             "style" : {}
-        }
+        },
+		{
+			"path":"pages/find/find"
+		},
+		{
+			"path":"pages/pub/index"
+		},
+		{
+			"path":"pages/pub/publish"
+		}
+		,{
+			"path":"pages/share/share"
+		}
+		
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

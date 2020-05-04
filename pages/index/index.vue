@@ -224,7 +224,50 @@
 			}
 		},
 		onLoad() {
-
+			/* var that = this
+			uni.authorize({
+				scope:"scope.userInfo",
+				success(res) {
+					console.log(res);
+				},
+				fail() {
+					uni.openSetting({
+						success(authSetting) {
+							console.log(authSetting);
+						}
+					})
+				}
+			});
+		 */
+			/* uni.getProvider({
+				service: 'oauth',
+				success: function(res) {
+					console.log(res.provider);
+					//支持微信、qq和微博等
+					if (~res.provider.indexOf('weixin')) {
+						uni.login({
+							provider: 'weixin',
+							scopes:'auth_user',
+							success: function(loginRes) {
+								console.log('-------获取openid(unionid)-----');
+								console.log(JSON.stringify(loginRes.code));
+								// 获取用户信息
+								uni.getUserInfo({
+									provider: 'weixin',
+									success: function(infoRes) {
+										that.$api.wxlogin({code:loginRes.code,user:infoRes.userInfo}).then((ret)=>{
+												console.log(ret)
+										}).catch((err)=>{
+										})
+										console.log('-------获取微信用户所有-----');
+										console.log(JSON.stringify(infoRes.userInfo));
+									}
+								});
+							}
+						});
+					}
+				}
+			}); */
 		},
 		methods: {
 			toHall(){
